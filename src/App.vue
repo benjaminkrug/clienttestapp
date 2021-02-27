@@ -17,10 +17,7 @@ export default {
   methods: {
     async backendTest() {
         this.test = await this.axios
-          .get('https://bkrugtestapi.azurewebsites.net/test', {
-            headers: {"Access-Control-Allow-Origin": "*"},
-            responseType: 'json'
-          })
+          .get('https://bkrugtestapi.azurewebsites.net/test')
           .then(response => {
             return response.data
           })
