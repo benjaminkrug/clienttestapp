@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="backendTest"> Daten aus DB laden</button>
+    {{ test }}
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      test: 'test'
+    }
+  },
+  methods: {
+    async backendTest() {
+        this.test = await this.axios
+          .get('https://bkrugtestapi.azurewebsites.net/test')
+          .then(response => {
+            return response.data
+          })
+    },
   }
 }
 </script>
